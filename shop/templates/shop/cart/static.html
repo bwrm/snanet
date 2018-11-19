@@ -38,6 +38,14 @@
 
 {% block shop-cart-tfoot %}
 	<tfoot>
+	{% if cart.total_weight %}
+		<tr>
+			<td colspan="3" class="text-right">{% trans "Total weight" %}</td>
+			<td class="text-right">
+				<strong djng-bind-if="cart.total_weight">{{ cart.total_weight }}</strong> {% trans "kg" %}
+			</td>
+		</tr>
+	{% endif %}
 		<tr>
 			<td colspan="3" class="text-right"><strong>{% trans "Subtotal" %}</strong></td>
 			<td class="text-right">

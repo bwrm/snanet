@@ -34,6 +34,7 @@ class PartialDeliveryWorkflowMixin(object):
     def ready_for_delivery(self):
         return self.is_fully_paid() and self.unfulfilled_items > 0
 
+    # @transition(field='status', source=['payment_confirmed', 'pack_goods', 'ship_goods'],
     @transition(field='status', source=['payment_confirmed', 'pack_goods', 'ship_goods'],
                 target='pick_goods', conditions=[ready_for_delivery],
         custom=dict(admin=True, button_name=_("Pick the goods")))

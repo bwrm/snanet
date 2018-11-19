@@ -187,6 +187,7 @@ class CustomerManager(models.Manager):
 class BaseCustomer(with_metaclass(deferred.ForeignKeyBuilder, models.Model)):
     """
     Base class for shop customers.
+
     Customer is a profile model that extends
     the django User model if a customer is authenticated. On checkout, a User
     object is created for anonymous customers also (with unusable password).
@@ -212,7 +213,6 @@ class BaseCustomer(with_metaclass(deferred.ForeignKeyBuilder, models.Model)):
         verbose_name=_("Extra information about this customer"),
     )
 
-    phonesnumber = models.CharField(_("Customer's phonenumber"), max_length=25)
 
     objects = CustomerManager()
 
@@ -229,16 +229,6 @@ class BaseCustomer(with_metaclass(deferred.ForeignKeyBuilder, models.Model)):
         return self.user.get_full_name()
 
     @property
-    def phonesnumber(self):
-        # pending deprecation: warnings.warn("Property first_name is deprecated and will be removed")
-        return self.user.phonesnumber
-
-    @phonesnumber.setter
-    def first_name(self, value):
-        # pending deprecation: warnings.warn("Property first_name is deprecated and will be removed")
-        self.user.phonesnumber = value
-
-    @property
     def first_name(self):
         # pending deprecation: warnings.warn("Property first_name is deprecated and will be removed")
         return self.user.first_name
@@ -247,16 +237,6 @@ class BaseCustomer(with_metaclass(deferred.ForeignKeyBuilder, models.Model)):
     def first_name(self, value):
         # pending deprecation: warnings.warn("Property first_name is deprecated and will be removed")
         self.user.first_name = value
-
-    @property
-    def last_name(self):
-        # pending deprecation: warnings.warn("Property last_name is deprecated and will be removed")
-        return self.user.last_name
-
-    @last_name.setter
-    def last_name(self, value):
-        # pending deprecation: warnings.warn("Property last_name is deprecated and will be removed")
-        self.user.last_name = value
 
     @property
     def email(self):

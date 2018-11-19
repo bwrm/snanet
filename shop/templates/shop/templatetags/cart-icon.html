@@ -6,7 +6,6 @@
 
 {% page_url 'shop-cart' as shop_cart_url %}
 {% page_attribute 'menu_title' 'shop-cart' as tooltip %}
-
 <a{% if shop_cart_url %} href="{{ shop_cart_url }}" title="{{ tooltip }}"{% endif %}>
 {% block carticon %}
 	<i class="fa fa-shopping-cart fa-fw fa-lg" uib-tooltip="{{ tooltip }}"></i>
@@ -19,5 +18,4 @@
 	<ng-pluralize count="caption.num_items" when="{'1': '{% trans "1 Item" context "cart icon" %}', 'other': '{% trans "{} Items" context "cart icon" %}'}"></ng-pluralize>
 {% endblock %}
 </script>
-
 {% endspaceless %}

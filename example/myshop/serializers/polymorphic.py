@@ -26,17 +26,26 @@ class LamellaFixToCartSerializer(AddToCartSerializer):
 
     def get_instance(self, context, data, extra_args):
         """
-        Method calculate lamelafix's subtotal price depending on order number
+        Method calculate product's subtotal price depending on order number
         """
 
         product = context['product']
         extra = data.get('extra', {}) if data is not empty else {}
+        unit_price = product.get_price(context['request'])
+        try:
+            rebate = product.get_rebate(data.get('quantity'))
+        except:
+            rebate = 0
+        price = unit_price * data.get('quantity')
+        rebate_price = price - (price*rebate)/100
+        if rebate:
+            unit_price = unit_price - (unit_price*rebate)/100
 
         return {
             'product': product.id,
             'product_code': product.product_code,
-            'unit_price': product.get_price(context['request']),
-            'subtotal': product.get_price(context['request']) * data.get('quantity') / 2,
+            'unit_price': unit_price,
+            'subtotal': rebate_price,
             'extra': extra,
         }
 

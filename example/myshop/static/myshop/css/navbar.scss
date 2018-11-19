@@ -11,6 +11,9 @@
 			text-align: center;
 		}
 		.brand-logo {
+			@media (max-width: 768px) {
+				display: none;
+			}
 			margin-top: 7px;
 		}
 	}

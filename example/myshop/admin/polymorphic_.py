@@ -14,7 +14,7 @@ from polymorphic.admin import (PolymorphicParentModelAdmin, PolymorphicChildMode
                                PolymorphicChildModelFilter)
 
 from shop.admin.product import CMSPageAsCategoryMixin, ProductImageInline, InvalidateProductCacheMixin, CMSPageFilter
-
+from myshop.models.discount import Discount
 from myshop.models import Product, Commodity, SmartCard, SmartPhoneVariant, SmartPhoneModel, LamellaFix
 
 
@@ -45,8 +45,8 @@ class SmartCardAdmin(InvalidateProductCacheMixin, SortableAdminMixin, FrontendEd
 class LamellaFixAdmin(InvalidateProductCacheMixin, SortableAdminMixin, FrontendEditableAdminMixin,
                      CMSPageAsCategoryMixin, PlaceholderAdminMixin, PolymorphicChildModelAdmin):
     base_model = Product
-    fields = ['product_name', 'slug', 'product_code', 'unit_price', 'active', 'caption',
-              'description', 'lamella_width']
+    fields = ['product_name', 'slug', 'product_code', 'unit_price', 'discont_scheme', 'active', 'caption',
+              'description', 'lamella_width', 'length','depth', 'weight']
     filter_horizontal = ['cms_pages']
     inlines = [ProductImageInline]
     prepopulated_fields = {'slug': ['product_name']}
@@ -97,3 +97,5 @@ class ProductAdmin(PolymorphicSortableAdminMixin, PolymorphicParentModelAdmin):
     def get_price(self, obj):
         return str(obj.get_real_instance().get_price(None))
     get_price.short_description = _("Price starting at")
+
+admin.site.register(Discount)

@@ -21,10 +21,11 @@ from shop.rest.money import MoneyField
 
 class BaseCustomerSerializer(serializers.ModelSerializer):
     number = serializers.CharField(source='get_number')
-
+    # Siarh changed
     class Meta:
         model = CustomerModel
-        fields = ['number', 'first_name', 'phonesnumber']
+        fields = ['first_name', 'phonesnumber',]
+        # fields = ['number', 'first_name', 'phonesnumber']
 
 
 class ProductSerializer(serializers.ModelSerializer):

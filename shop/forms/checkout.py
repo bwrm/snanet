@@ -15,6 +15,7 @@ from shop.models.address import ShippingAddressModel, BillingAddressModel
 from shop.models.customer import CustomerModel
 from shop.modifiers.pool import cart_modifiers_pool
 from .base import DialogForm, DialogModelForm, UniqueEmailValidationMixin
+from shop.models.defaults.customer import Customer
 
 
 class CustomerForm(DialogModelForm):
@@ -22,14 +23,15 @@ class CustomerForm(DialogModelForm):
     legend = _("Customer's Details")
 
     # email = fields.EmailField(label=_("Email address"))
-    # first_name = fields.CharField(label=_("First Name"))
-    phonesnumber = fields.CharField(label=_("Phone Number"))
+    first_name = fields.CharField(label=_("First Name"))
+    last_name = fields.CharField(label=_("Phone Number"))
 
     class Meta:
         model = CustomerModel
-        exclude = ['user', 'recognized', 'number', 'last_access']
-        custom_fields = ['phonesnumber']
-        # custom_fields = ['email','first_name', 'phonesnumber']
+        exclude = ['email', 'user', 'recognized', 'number', 'last_access']
+        # custom_fields = ['email', 'first_name']
+        # last_name field used instead phonenumber field
+        custom_fields = ['first_name', 'last_name']
 
     def __init__(self, initial=None, instance=None, *args, **kwargs):
         initial = dict(initial) if initial else {}
@@ -55,15 +57,16 @@ class GuestForm(UniqueEmailValidationMixin, DialogModelForm):
     scope_prefix = 'guest'
     form_name = 'customer_form'  # Override form name to reuse template `customer-form.html`
     legend = _("Customer's Data")
-    name = fields.CharField(label=_("Full Name"))
-    phonesnumber = fields.CharField(label=_("Phone Number"))
-
-
+    first_name = fields.CharField(label=_("Full Name"))
+    # last_name field used instead phonenumber field
+    last_name = fields.CharField(label=_("Phone Number"))
     # email = fields.EmailField(label=_("Email address"))
 
     class Meta:
-        model = get_user_model()  # since we only use the email field, use the User model directly
-        fields = ['name', 'phonesnumber']
+        # model = get_user_model()  # since we only use the email field, use the User model directly
+        model = CustomerModel # changed by Siarhei
+        fields = ['first_name', 'last_name']
+        # fields = ['email', 'first_name']
 
     def __init__(self, initial=None, instance=None, *args, **kwargs):
         if isinstance(instance, CustomerModel):

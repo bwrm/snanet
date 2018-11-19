@@ -47,7 +47,6 @@ djangoShopModule.controller('AddToCartCtrl', ['$scope', '$http', '$window', '$ui
 			$window.location.href = next_url;
 		});
 	};
-
 }]);
 
 djangoShopModule.controller('ModalInstanceCtrl',

@@ -2,20 +2,18 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-
+from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
 from cms.cms_menus import SoftRootCutter
 from menus.menu_pool import menu_pool
 
 from shop.cms_apphooks import CatalogListCMSApp, CatalogSearchCMSApp, OrderCMSApp
+from django.utils.translation import ugettext_lazy as _
 
 
 class CatalogListApp(CatalogListCMSApp):
     def get_urls(self, page=None, language=None, **kwargs):
-        if settings.SHOP_TUTORIAL in ['i18n_polymorphic', 'polymorphic']:
-            return ['myshop.urls.polymorphic_products']
-        else:
-            return ['myshop.urls.simple_products']
+        return ['myshop.urls.polymorphic_products']
 
 apphook_pool.register(CatalogListApp)
 
@@ -51,3 +49,4 @@ def _deregister_menu_pool_modifier(Modifier):
         menu_pool.modifiers.pop(index)
 
 _deregister_menu_pool_modifier(SoftRootCutter)
+

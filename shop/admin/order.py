@@ -5,7 +5,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models.fields import Field, FieldDoesNotExist
-from django.forms import widgets
+from django.forms import fields, models, widgets
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.template.loader import select_template
@@ -85,9 +85,10 @@ class StatusListFilter(admin.SimpleListFilter):
             return queryset.filter(status=self.value())
         return queryset
 
-
 class BaseOrderAdmin(FSMTransitionMixin, admin.ModelAdmin):
-    list_display = ['get_number', 'customer', 'status_name', 'get_total', 'created_at']
+
+    list_display = ['get_number', 'customer','status_name', 'get_total', 'created_at']
+
     list_filter = [StatusListFilter]
     fsm_field = ['status']
     date_hierarchy = 'created_at'
@@ -226,6 +227,7 @@ class OrderAdmin(BaseOrderAdmin):
     """
     Admin class to be used with `shop.models.defauls.order`
     """
+
     def get_fields(self, request, obj=None):
         fields = list(super(OrderAdmin, self).get_fields(request, obj))
         fields.extend(['shipping_address_text', 'billing_address_text'])

@@ -32,7 +32,6 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-
     class Meta:
         db_table = 'auth_user'
         verbose_name = _("Customer")

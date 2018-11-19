@@ -111,7 +111,7 @@ tax rate in percent.
 	    def add_extra_cart_item_row(self, cart_item, request):
 	        vat = cart_item.product.vat
 	        tax_attr = '_{0}_vat_{1}'.format(self.identifier, vat)
-	        amount = cart_item.line_total * Decimal(vat) / 100
+	        amount = cart_item.line_total * Decimal(vat)
 	        setattr(cart_item, tax_attr, amount)
 
 	    def post_process_cart_item(self, cart, cart_item, request):

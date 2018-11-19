@@ -9,11 +9,13 @@
 
 {% page_url "shop-watch-list" as shop_watch_list_url %}{% if not shop_watch_list_url %}{% url "shop-watch-list" as shop_watch_list_url %}{% endif %}
 
-{% block add-product-to-cart-panel %}{% with inline_styles=instance.inline_styles %}
-<div class="panel panel-default"{% if inline_styles %} style="{{ inline_styles }}"{% endif %}>
-	<div class="panel-heading">
-		<h3 class="panel-title">{% trans "Order Product" %}</h3>
-	</div>
+{% block add-product-to-cart-panel %}
+	{% with inline_styles=instance.inline_styles %}
+		<div>
+{#<div class="panel panel-default"{% if inline_styles %} style="{{ inline_styles }}"{% endif %}>#}
+{#	<div class="panel-heading">#}
+{#		<h3 class="panel-title">{% trans "Order Product" %}</h3>#}
+{#	</div>#}
 	{% block add-product-to-cart-table %}
 	<table shop-add-to-cart="{{ product.get_absolute_url }}/add-to-cart" class="table">
 		<thead>
@@ -79,8 +81,12 @@
 	{% block add-to-cart-modal-footer %}
 		{% page_url "shop-cart" as shop_cart_url %}{% if not shop_cart_url %}{% url "shop-cart" as shop_cart_url %}{% endif %}
 	<div class="modal-footer">
+
+		{% if shop_watch_list_url %}
+			<button class="btn btn-info btn-xs" ng-click="proceed('{{ shop_watch_list_url }}')">{% trans "Watch list" %}</button>
+		{% endif %}
 		{% if shop_cart_url %}
-		<button class="btn btn-primary" ng-click="proceed('{{ shop_cart_url }}')">{% trans "Show Cart" %}</button>
+			<button class="btn btn-primary" ng-click="proceed('{{ shop_cart_url }}')">{% trans "Show Cart" %}</button>
 		{% endif %}
 		<button class="btn btn-primary" ng-click="proceed('{{ request.current_page.get_absolute_url }}')">{% trans "Continue Shopping" %}</button>
 		<button class="btn btn-warning" ng-click="cancel()">{% trans "Cancel" %}</button>

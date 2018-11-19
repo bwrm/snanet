@@ -180,7 +180,7 @@ USE_I18N = True
 
 LANGUAGES = (
     ('ru', "Russian"),
-    ('en', "English"),
+    # ('en', "English"),
 )
 
 PARLER_DEFAULT_LANGUAGE = 'ru'
@@ -188,16 +188,18 @@ PARLER_DEFAULT_LANGUAGE = 'ru'
 PARLER_LANGUAGES = {
     1: (
         {'code': 'ru'},
-        {'code': 'en'},
+        # {'code': 'en'},
     ),
     'default': {
-        'fallbacks': ['ru', 'en'],
+        # 'fallbacks': ['ru','en'],
+        'fallbacks': ['ru',],
     },
 }
 
 CMS_LANGUAGES = {
     'default': {
-        'fallbacks': ['ru', 'en'],
+        'fallbacks': ['ru', ],
+        # 'fallbacks': ['ru', 'en'],
         'redirect_on_fallback': True,
         'public': True,
         'hide_untranslated': False,
@@ -208,16 +210,17 @@ CMS_LANGUAGES = {
         'hide_untranslated': False,
         'name': 'Russian',
         'redirect_on_fallback': True,
-    }, {
-        'public': True,
-        'code': 'en',
-        'hide_untranslated': False,
-        'name': 'English',
-        'redirect_on_fallback': True,
-    },)
+    },
+        # {
+        #     'public': True,
+        #     'code': 'en',
+        #     'hide_untranslated': False,
+        #     'name': 'English',
+        #     'redirect_on_fallback': True,
+        # },
+    )
 }
 
-# TODO: change language to primary RU
 
 USE_L10N = True
 
@@ -441,7 +444,7 @@ THUMBNAIL_PROCESSORS = (
 
 CMS_TEMPLATES = [
     ('myshop/pages/default.html', _("Default Page")),
-    ('myshop/pages/test.html', _("Test Page")),  # to show strides rendering via {% render_cascade ... %}
+    ('myshop/pages/static.html', _("Static Page")),  # to show strides rendering via {% render_cascade ... %}
 ]
 
 CMS_CACHE_DURATIONS = {
@@ -617,7 +620,7 @@ if USE_I18N:
     HAYSTACK_CONNECTIONS['ru'] = {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': 'http://{}:9200/'.format(ELASTICSEARCH_HOST),
-        'INDEX_NAME': 'myshop-{}-de'.format(SHOP_TUTORIAL),
+        'INDEX_NAME': 'myshop-{}-ru'.format(SHOP_TUTORIAL),
     }
 
 HAYSTACK_ROUTERS = [
@@ -627,17 +630,16 @@ HAYSTACK_ROUTERS = [
 ############################################
 # settings for django-shop and its plugins
 
-SHOP_VALUE_ADDED_TAX = Decimal(19)
+SHOP_VALUE_ADDED_TAX = 0
 SHOP_DEFAULT_CURRENCY = 'BYN'
+SHOP_MONEY_FORMAT = '{amount} {symbol}'
 SHOP_PRODUCT_SUMMARY_SERIALIZER = 'myshop.serializers.ProductSummarySerializer'
-if SHOP_TUTORIAL in ['i18n_polymorphic', 'polymorphic']:
-    SHOP_CART_MODIFIERS = ['myshop.polymorphic_modifiers.MyShopCartModifier']
-else:
-    SHOP_CART_MODIFIERS = ['shop.modifiers.defaults.DefaultCartModifier']
+SHOP_CART_MODIFIERS = ['myshop.polymorphic_modifiers.MyShopCartModifier']
 SHOP_CART_MODIFIERS.extend([
-    'shop.modifiers.taxes.CartExcludedTaxModifier',
+    # 'shop.modifiers.taxes.CartExcludedTaxModifier',
     'myshop.modifiers.PostalShippingModifier',
     'myshop.modifiers.CustomerPickupModifier',
+    'myshop.modifiers.CourierModifier',
     'shop.modifiers.defaults.PayInAdvanceModifier',
 ])
 
@@ -656,10 +658,7 @@ if 'shop_sendcloud' in INSTALLED_APPS:
     SHOP_CART_MODIFIERS.append('shop_sendcloud.modifiers.SendcloudShippingModifier')
     SHOP_ORDER_WORKFLOWS.append('shop_sendcloud.shipping.OrderWorkflowMixin')
 
-if SHOP_TUTORIAL in ['i18n_polymorphic', 'polymorphic']:
-    SHOP_ORDER_WORKFLOWS.append('shop.shipping.delivery.PartialDeliveryWorkflowMixin')
-else:
-    SHOP_ORDER_WORKFLOWS.append('shop.shipping.defaults.CommissionGoodsWorkflowMixin')
+SHOP_ORDER_WORKFLOWS.append('shop.shipping.delivery.PartialDeliveryWorkflowMixin')
 
 SHOP_STRIPE = {
     'PUBKEY': 'pk_test_HlEp5oZyPonE21svenqowhXp',

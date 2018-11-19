@@ -54,9 +54,9 @@
 			<span class="help-block">{{ register_user_form.password2.help_text|safe }}</span>
 		</div>
 	</div>
-
+		{#TODO: trouble with resgistration new user#}
 	<div class="form-group">
-		<button type="button" ng-click="{% include './proceed-with.html' with proceed_delay=1000 %}" ng-disabled="isDisabled()" class="btn btn-primary">{% trans "Register" %}</button>
+		<button type="button" ng-click="{% include './proceed-with.html' with proceed_delay=100 %}" ng-disabled="isDisabled()" class="btn btn-primary">{% trans "Register" %}</button>
 	</div>
 </form>
 {% endblock form-content %}

@@ -15,9 +15,9 @@
 			<td>
 				<input type="number" min="1" class="form-control" ng-model="context.quantity"  ng-change="updateContext()" />
 
-				</select>
 			</td>
 			<td ng-bind="context.unit_price"></td>
+			<td ng-bind="context.rebate"></td>
 			<td ng-bind="context.subtotal"></td>
 		</tr>
 		{% if request.session.is_empty %}
@@ -27,10 +27,11 @@
 		{% endif %}
 		<tr>
 			<td colspan="2">
-				<button class="btn btn-info btn-block btn-xs" ng-click="addToCart('{% url 'shop:watch-list' %}', {watch: true})">{% trans "Watch product" %}</button>
+				<button class="btn btn-info btn-xs" ng-disabled="!context.quantity" ng-click="addToCart('{% url 'shop:watch-list' %}', {watch: true})">{% trans "Watch product" %}</button>
+
 			</td>
 			<td colspan="2">
-				<button class="btn btn-primary btn-block" ng-click="addToCart('{% url 'shop:cart-list' %}')">{% trans "Add to cart" %}</button>
+				<button class="btn btn-primary btn-block" ng-disabled="!context.quantity" ng-click="addToCart('{% url 'shop:cart-list' %}')">{% trans "Add to cart" %}</button>
 			</td>
 		</tr>
 	</tbody>

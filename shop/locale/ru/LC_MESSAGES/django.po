@@ -2136,7 +2136,7 @@ msgstr "Доллар США"
 
 #: payment/defaults.py:34
 msgid "Awaiting a forward fund payment"
-msgstr "Ожидается оплата"
+msgstr "На утверждении"
 
 #: payment/defaults.py:35
 msgid "Prepayment deposited"

@@ -19,8 +19,20 @@ class PostalShippingModifier(ShippingModifier):
     def add_extra_cart_row(self, cart, request):
         if not self.is_active(cart) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
             return
+        # postal tarifs by Siarhei
+        if cart.total_weight<1:
+            amount = Money('4')
+        elif cart.total_weight >=1 and cart.total_weight < 3:
+            amount = Money('7.5')
+        elif cart.total_weight >=3 and cart.total_weight < 15:
+            amount = Money('10')
+        elif cart.total_weight >=15 and cart.total_weight < 30:
+            amount = Money('20')
+        elif cart.total_weight > 30:
+            amount = Money('500')
+        else:
+            amount = Money('999')
         # add a shipping flat fee
-        amount = Money('5')
         instance = {'label': _("Shipping costs"), 'amount': amount}
         cart.extra_rows[self.identifier] = ExtraCartRow(instance)
         cart.total += amount
@@ -31,6 +43,22 @@ class CustomerPickupModifier(ShippingModifier):
 
     def get_choice(self):
         return (self.identifier, _("Customer pickups the goods"))
+
+class CourierModifier(ShippingModifier):
+    identifier = 'courier-delivery'
+    shipping_provider = DefaultShippingProvider()
+
+    def get_choice(self):
+        return (self.identifier, _("Courier delivery. Onliy within Minsk"))
+
+    def add_extra_cart_row(self, cart, request):
+        if not self.is_active(cart) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
+            return
+        # add a shipping flat fee
+        amount = Money('3')
+        instance = {'label': _("Courier shipping costs"), 'amount': amount}
+        cart.extra_rows[self.identifier] = ExtraCartRow(instance)
+        cart.total += amount
 
 
 class StripePaymentModifier(modifiers.StripePaymentModifier):

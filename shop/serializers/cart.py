@@ -146,9 +146,11 @@ class BaseCartSerializer(serializers.ModelSerializer):
 class CartSummarySerializer(BaseCartSerializer):
     total_quantity = serializers.IntegerField()
     num_items = serializers.IntegerField()
+    total_weight = serializers.FloatField()
+    # changed by Siarhei
 
     class Meta(BaseCartSerializer.Meta):
-        fields = ['total_quantity', 'num_items'] + BaseCartSerializer.Meta.fields
+        fields = ['total_quantity', 'num_items', 'total_weight'] + BaseCartSerializer.Meta.fields
 
 
 class CartSerializer(CartSummarySerializer):

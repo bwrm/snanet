@@ -299,6 +299,19 @@ class BaseCart(with_metaclass(deferred.ForeignKeyBuilder, models.Model)):
         return aggr['quantity'] or 0
         # if we would know, that self.items is already evaluated, then this might be faster:
         # return sum([ci.quantity for ci in self.items.all()])
+    # added by Siarhei
+    @property
+    def total_weight(self):
+        """
+        Returns the total weight of all items in the cart (for Shipping Services).
+        """
+        rez = 0
+        for item in self.items.all():
+            try:
+                rez += float(item.product.weight) * item.quantity
+            except:
+                pass
+        return rez
 
     @property
     def is_empty(self):
