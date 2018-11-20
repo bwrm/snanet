@@ -6,7 +6,7 @@ from shop.serializers.cart import ExtraCartRow
 from shop.modifiers.base import ShippingModifier
 from shop.money import Money
 from shop.shipping.defaults import DefaultShippingProvider
-from shop_stripe import modifiers
+#from shop_stripe import modifiers
 
 
 class PostalShippingModifier(ShippingModifier):
@@ -61,5 +61,5 @@ class CourierModifier(ShippingModifier):
         cart.total += amount
 
 
-class StripePaymentModifier(modifiers.StripePaymentModifier):
-    commision_percentage = 3
+# class StripePaymentModifier(modifiers.StripePaymentModifier):
+#     commision_percentage = 3
