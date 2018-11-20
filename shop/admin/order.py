@@ -140,9 +140,9 @@ class BaseOrderAdmin(FSMTransitionMixin, admin.ModelAdmin):
     def get_customer_link(self, obj):
         try:
             url = reverse('admin:shop_customerproxy_change', args=(obj.customer.pk,))
-            return format_html('<a href="{0}" target="_new">{1}</a>', url, obj.customer.get_username())
+            return format_html('<a href="{0}" target="_new">{1}</a> {2} <strong>{3}</strong>', url, obj.customer.get_username(), obj.customer.first_name, obj.customer.last_name)
         except NoReverseMatch:
-            return format_html('<strong>{0}</strong>', obj.customer.get_username())
+            return format_html('<strong>{0} {1} {2}</strong>', obj.customer.get_username(), obj.customer.first_name, obj.customer.last_name)
     get_customer_link.short_description = pgettext_lazy('admin', "Customer")
 
     def get_search_fields(self, request):
