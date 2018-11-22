@@ -121,7 +121,7 @@ INSTALLED_APPS = [
     'post_office',
     'haystack',
     'shop',
-    'shop_stripe',
+    #'shop_stripe',
     'myshop',
 ]
 if SHOP_TUTORIAL in ['i18n_commodity', 'i18n_smartcard', 'i18n_polymorphic']:
@@ -276,7 +276,7 @@ TEMPLATES = [{
             'cms.context_processors.cms_settings',
             'shop.context_processors.customer',
             'shop.context_processors.ng_model_options',
-            'shop_stripe.context_processors.public_keys',
+            #'shop_stripe.context_processors.public_keys',
         )
     }
 }]
