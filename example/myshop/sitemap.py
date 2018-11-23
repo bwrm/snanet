@@ -12,8 +12,7 @@ elif settings.SHOP_TUTORIAL in ['i18n_smartcard', 'smartcard']:
 
 elif settings.SHOP_TUTORIAL in ['i18n_polymorphic', 'polymorphic']:
     from myshop.models import Product
-
-
+# comm
 class ProductSitemap(Sitemap):
     changefreq = 'monthly'
     priority = 0.5
