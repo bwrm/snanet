@@ -41,12 +41,21 @@ class LamellaFix(Product):
 
     weight = models.CharField(
         _('weight'),
-        default=1,
+        default=0,
         max_length=6,
-        help_text=_("Weight of item")
+        help_text=_("Weight of item, kg")
+    )
+    is_lamella = models.BooleanField(
+        _("Lamella"),
+        default=True,
+        help_text=_("Is this lamella (for calculating weight)."),
     )
 
-
+    weight_by_hand = models.BooleanField(
+        _("Enter weight by hand"),
+        default=False,
+        help_text=_("For enter lamella weight by hand"),
+    )
 
     discont_scheme = models.ForeignKey(Discount, blank=True, on_delete=models.CASCADE)
 
@@ -67,6 +76,14 @@ class LamellaFix(Product):
     class Meta:
         verbose_name = _("Lamella")
         verbose_name_plural = _("Lamellas")
+
+    def save(self, *args, **kwargs):
+        if(self.is_lamella and not self.weight_by_hand):
+            m = 0.00075  # calculated empiric method
+            vol = float(self.length) * float(self.lamella_width) * float(self.depth)
+            self.weight = round((vol * m / 1000), 3)
+        super(LamellaFix, self).save(*args, **kwargs)
+
 
     def get_price(self, request):
         return self.unit_price
