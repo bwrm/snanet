@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: django-shop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 20:09+0800\n"
-"PO-Revision-Date: 2018-09-17 22:12+0300\n"
+"PO-Revision-Date: 2018-11-24 06:00+0300\n"
 "Last-Translator: chrisglass <tribaal@gmail.com>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -318,7 +318,7 @@ msgstr "Каталог"
 
 #: cascade/catalog.py:38
 msgid "Add Product to Cart"
-msgstr "Добавить продукты в корзину"
+msgstr "Добавить в корзину"
 
 #: cascade/catalog.py:53
 msgid "Related Product"
@@ -1735,7 +1735,7 @@ msgstr "Код продукта"
 
 #: models/defaults/commodity.py:47 models/defaults/commodity.py:105 models/order.py:356
 msgid "Unit price"
-msgstr "Стоимость единицы"
+msgstr "Цена за шт."
 
 #: models/defaults/commodity.py:48 models/defaults/commodity.py:106
 msgid "Net price for this product"
@@ -1900,7 +1900,7 @@ msgstr "Валюта, в которой этот заказ был оформл�
 #: templates/shop/email/order.html:41 templates/shop/order/detail.html:48
 #: templates/shop/print/order.html:44
 msgid "Subtotal"
-msgstr "Стоимость корзины"
+msgstr "Цена за товары:"
 
 #: models/order.py:178 templates/shop/cart/editable.html:19 templates/shop/cart/editable.html:50
 #: templates/shop/cart/static.html:12 templates/shop/cart/static.html:59
@@ -1908,7 +1908,7 @@ msgstr "Стоимость корзины"
 #: templates/shop/order/detail.html:18 templates/shop/order/detail.html:62
 #: templates/shop/print/order.html:12 templates/shop/print/order.html:58
 msgid "Total"
-msgstr "Всего к оплате за товары"
+msgstr "Всего"
 
 #: models/order.py:181 models/order.py:362
 msgid "Extra fields"
@@ -1983,15 +1983,15 @@ msgstr "Стоимость товара на момент покупки"
 
 #: models/order.py:359
 msgid "Line Total"
-msgstr "Всего к оплате за товары"
+msgstr "Сумма"
 
 #: models/order.py:360
 msgid "Line total on the invoice at the moment of purchase."
-msgstr "Всего к оплате за товары на счёте на момент покупки"
+msgstr "Всего к оплате"
 
 #: models/order.py:363
 msgid "Arbitrary information for this order item"
-msgstr "Дополнительная информация об элементе заказа"
+msgstr "Дополнительная информация"
 
 #: models/order.py:367
 msgid "Order item"
@@ -2334,11 +2334,11 @@ msgstr "Количество"
 #: templates/shop/cart/watch.html:17 templates/shop/catalog/product-add2cart.html:17
 #: templates/shop/order/detail.html:17 templates/shop/print/order.html:11
 msgid "Unit Price"
-msgstr "Стоимость единицы"
+msgstr "Цена за шт."
 
 #: templates/shop/cart/editable.html:87
 msgid "Watch Item"
-msgstr "Добавить в список"
+msgstr "В список"
 
 #: templates/shop/cart/summary.html:6
 msgid "Number of items"
@@ -2375,7 +2375,7 @@ msgstr ""
 
 #: templates/shop/catalog/product-add2cart.html:44
 msgid "Watch product"
-msgstr "Добавить в список"
+msgstr "В список"
 
 #: templates/shop/catalog/product-add2cart.html:60
 msgid "The product has been successfully placed in the shopping cart:"
