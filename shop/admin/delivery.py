@@ -67,7 +67,8 @@ class OrderItemInlineDelivery(OrderItemInline):
     def get_fields(self, request, obj=None):
         fields = list(super(OrderItemInlineDelivery, self).get_fields(request, obj))
         if obj:
-            if obj.status == 'pick_goods' and obj.unfulfilled_items > 0:
+            if obj.status == 'pick_goods':
+            # if obj.status == 'pick_goods' and obj.unfulfilled_items > 0:
                 fields[1] += ('deliver_quantity', 'canceled',)
             else:
                 fields[1] += ('get_delivered', 'show_ready',)
@@ -76,7 +77,8 @@ class OrderItemInlineDelivery(OrderItemInline):
     def get_readonly_fields(self, request, obj=None):
         readonly_fields = list(super(OrderItemInlineDelivery, self).get_readonly_fields(request, obj))
         if obj:
-            if not (obj.status == 'pick_goods' and obj.unfulfilled_items > 0):
+            # if not (obj.status == 'pick_goods' and obj.unfulfilled_items > 0):
+            if not (obj.status == 'pick_goods'):
                 readonly_fields.extend(['get_delivered', 'show_ready'])
         return readonly_fields
 
@@ -88,7 +90,8 @@ class OrderItemInlineDelivery(OrderItemInline):
         attrs = models.fields_for_model(obj.items.model, fields=['quantity'], labels=labels)
         # rename to deliver_quantity, since quantity is already used
         attrs['deliver_quantity'] = attrs.pop('quantity')
-        if obj.status == 'pick_goods' and obj.unfulfilled_items > 0:
+        if obj.status == 'pick_goods':
+        # if obj.status == 'pick_goods' and obj.unfulfilled_items > 0:
             attrs['deliver_quantity'].widget.attrs.update(style='width: 50px;')
         else:
             attrs['deliver_quantity'].required = False
@@ -125,7 +128,8 @@ class DeliveryInline(admin.TabularInline):
 
     def get_max_num(self, request, obj=None, **kwargs):
         qs = self.model.objects.filter(order=obj)
-        if obj.status != 'pick_goods' or qs.filter(fulfilled_at__isnull=True) or obj.unfulfilled_items == 0:
+        if obj.status != 'pick_goods' or qs.filter(fulfilled_at__isnull=True):
+        # if obj.status != 'pick_goods' or qs.filter(fulfilled_at__isnull=True) or obj.unfulfilled_items == 0:
             return qs.count()
         return qs.count() + 1
 

@@ -6,7 +6,7 @@
 # Mikhail Kolesnik <mike@openbunker.org>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: django-shop\n"
+"Project-Id-Version: django-shop\n "
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 20:09+0800\n"
 "PO-Revision-Date: 2018-11-24 06:00+0300\n"
@@ -1881,7 +1881,7 @@ msgstr "Новый заказ без содержания"
 
 #: models/order.py:164
 msgid "Order freshly created"
-msgstr "Заказ только что создан"
+msgstr "На утверждении" # error made for programming needs
 
 #: models/order.py:165
 msgid "Payment confirmed"
@@ -2031,7 +2031,7 @@ msgstr "Название товара"
 
 #: modifiers/defaults.py:41
 msgid "Pay in advance"
-msgstr "Оплата при получении"
+msgstr "Внести предоплату"
 
 #: modifiers/defaults.py:53
 msgid "Self collection"

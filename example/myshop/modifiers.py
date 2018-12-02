@@ -6,7 +6,11 @@ from shop.serializers.cart import ExtraCartRow
 from shop.modifiers.base import ShippingModifier
 from shop.money import Money
 from shop.shipping.defaults import DefaultShippingProvider
-#from shop_stripe import modifiers
+from shop.payment.defaults import ForwardFundPayment
+from myshop.payment import CodPayment
+
+from shop.modifiers.base import PaymentModifier
+from shop_stripe import modifiers
 
 
 class PostalShippingModifier(ShippingModifier):
@@ -38,6 +42,36 @@ class PostalShippingModifier(ShippingModifier):
         cart.total += amount
 
 
+class PostalPremiumShippingModifier(ShippingModifier):
+    "class implement premium shipping modifier (from post to door)"
+    identifier = 'postal-shipping-premium'
+    shipping_provider = DefaultShippingProvider()
+
+    def get_choice(self):
+        return (self.identifier, _("Postal shipping premium"))
+
+    def add_extra_cart_row(self, cart, request):
+        if not self.is_active(cart) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
+            return
+        # postal tarifs by Siarhei
+        if cart.total_weight<1:
+            amount = Money('6')
+        elif cart.total_weight >=1 and cart.total_weight < 3:
+            amount = Money('9')
+        elif cart.total_weight >=3 and cart.total_weight < 15:
+            amount = Money('12')
+        elif cart.total_weight >=15 and cart.total_weight < 30:
+            amount = Money('23')
+        elif cart.total_weight > 30:
+            amount = Money('500')
+        else:
+            amount = Money('999')
+        # add a shipping flat fee
+        instance = {'label': _("Shipping costs to home"), 'amount': amount}
+        cart.extra_rows[self.identifier] = ExtraCartRow(instance)
+        cart.total += amount
+
+
 class CustomerPickupModifier(ShippingModifier):
     identifier = 'customer-pickup'
 
@@ -60,6 +94,49 @@ class CourierModifier(ShippingModifier):
         cart.extra_rows[self.identifier] = ExtraCartRow(instance)
         cart.total += amount
 
+
+class CashOnDeliveryPostModifier(PaymentModifier):
+    """
+    This modifiers has 5% influence on the cart final. It used,
+    to enable the customer to pay the products on postal-delivery.
+    """
+    identifier = 'cash-on-post'
+    payment_provider = CodPayment()
+    commision_percentage = 5
+
+    def get_choice(self):
+        return (self.identifier, _("Cash on Post"))
+
+    def add_extra_cart_row(self, cart, request):
+        from decimal import Decimal
+        if not self.is_active(cart) or not self.commision_percentage:
+            return
+        amount = cart.total * Decimal(self.commision_percentage / 100.0)
+        instance = {'label': _("+ {}% handling fee").format(self.commision_percentage), 'amount': amount}
+        cart.extra_rows[self.identifier] = ExtraCartRow(instance)
+        cart.total += amount
+
+
+class CashOnDeliveryModifier(PaymentModifier):
+    """
+    This modifiers no influence on the cart final. It used,
+    to enable the customer to pay the products on postal-delivery.
+    """
+    identifier = 'cash-on-delivery'
+    payment_provider = CodPayment()
+    commision_percentage = 0
+
+    def get_choice(self):
+        return (self.identifier, _("Cash on Delivery"))
+
+    def add_extra_cart_row(self, cart, request):
+        from decimal import Decimal
+        if not self.is_active(cart) or not self.commision_percentage:
+            return
+        amount = cart.total * Decimal(self.commision_percentage / 100.0)
+        instance = {'label': _("+ {}% handling fee").format(self.commision_percentage), 'amount': amount}
+        cart.extra_rows[self.identifier] = ExtraCartRow(instance)
+        cart.total += amount
 
 # class StripePaymentModifier(modifiers.StripePaymentModifier):
 #     commision_percentage = 3

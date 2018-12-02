@@ -3,22 +3,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-24 04:12+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2018-12-01 15:42+0300\n"
+"PO-Revision-Date: 2018-12-01 15:43+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: myshop/admin/polymorphic_.py:83 myshop/admin/polymorphicx_.py:74
 msgid "Text Index"
@@ -26,53 +26,56 @@ msgstr ""
 
 #: myshop/admin/polymorphic_.py:99 myshop/admin/polymorphicx_.py:90
 msgid "Price starting at"
-msgstr ""
+msgstr "Цена от"
 
 #: myshop/apps.py:13
 msgid "My Shop"
-msgstr ""
+msgstr "Магазин"
 
 #: myshop/management/commands/initialize_shop_demo.py:23
 msgid "Initialize the workdir to run the demo of myshop."
-msgstr ""
+msgstr "Инициализация рабочей дериктории для запуска демо версии"
 
 #: myshop/models/discount.py:7
 msgid "Discount name"
-msgstr ""
+msgstr "Группа скидок"
 
 #: myshop/models/discount.py:8
 msgid "Discount schema"
-msgstr ""
+msgstr "Схема скидок"
 
 #: myshop/models/discount.py:8
 msgid ""
 "Type discont scheme: first- quantity? second- rebate in %. Example: 10:25 - "
 "10 -quantity 25%"
 msgstr ""
+"Введите схему применения скидок: первая цифра - количество с которого "
+"начинается скидка, вторая - скидка в %. Например: 10:25 - при заказе от 10 "
+"шт, скидка составляет 25%"
 
 #: myshop/models/manufacturer.py:11 myshop/models/polymorphic_/smartphone.py:21
 msgid "Name"
-msgstr ""
+msgstr "Название"
 
 #: myshop/models/polymorphic_/commodity.py:19
 #: myshop/models/polymorphic_/lamella.py:16
 #: myshop/models/polymorphic_/smartcard.py:17
 #: myshop/models/polymorphic_/smartphone.py:173
 msgid "Unit price"
-msgstr ""
+msgstr "Цена за ед."
 
 #: myshop/models/polymorphic_/commodity.py:21
 #: myshop/models/polymorphic_/smartcard.py:19
 #: myshop/models/polymorphic_/smartphone.py:175
 msgid "Net price for this product"
-msgstr ""
+msgstr "Цена за этот продукт"
 
 #: myshop/models/polymorphic_/commodity.py:25
 #: myshop/models/polymorphic_/lamella.py:63
 #: myshop/models/polymorphic_/smartcard.py:39
 #: myshop/models/polymorphic_/smartphone.py:167
 msgid "Product code"
-msgstr ""
+msgstr "Артикул"
 
 #: myshop/models/polymorphic_/commodity.py:32
 #: myshop/models/polymorphic_/smartcard.py:46
@@ -80,66 +83,66 @@ msgstr ""
 #: myshop/templates/myshop/catalog/smartcard-detail.html:29
 #: myshop/templates/myshop/catalog/smartphonemodel-detail.html:25
 msgid "Manufacturer"
-msgstr ""
+msgstr "Производитель"
 
 #: myshop/models/polymorphic_/commodity.py:38
 msgid "Commodity"
-msgstr ""
+msgstr "Товар"
 
 #: myshop/models/polymorphic_/commodity.py:39
 msgid "Commodities"
-msgstr ""
+msgstr "Товары"
 
 #: myshop/models/polymorphic_/lamella.py:18
 msgid " per unit"
-msgstr ""
+msgstr "за ед."
 
 #: myshop/models/polymorphic_/lamella.py:23
 msgid "width"
-msgstr ""
+msgstr "ширина"
 
 #: myshop/models/polymorphic_/lamella.py:27
 msgid "Lammelas width"
-msgstr ""
+msgstr "Ширина ламели"
 
 #: myshop/models/polymorphic_/lamella.py:31
 msgid "Lamella's length"
-msgstr ""
+msgstr "Длина ламели"
 
 #: myshop/models/polymorphic_/lamella.py:37
 msgid "Lamella's depth"
-msgstr ""
+msgstr "Толщина ламели"
 
 #: myshop/models/polymorphic_/lamella.py:43
 msgid "weight"
-msgstr ""
+msgstr "вес"
 
 #: myshop/models/polymorphic_/lamella.py:46
 msgid "Weight of item, kg"
-msgstr ""
+msgstr "Вес единицы"
 
 #: myshop/models/polymorphic_/lamella.py:49
 #: myshop/models/polymorphic_/lamella.py:77
 msgid "Lamella"
-msgstr ""
+msgstr "Ламель"
 
 #: myshop/models/polymorphic_/lamella.py:51
 msgid "Is this lamella (for calculating weight)."
-msgstr ""
+msgstr "Отметить как ламель (для автоматического вычисления веса)"
 
 #: myshop/models/polymorphic_/lamella.py:55
 msgid "Enter weight by hand"
-msgstr ""
+msgstr "Ввести вес вручную"
 
 #: myshop/models/polymorphic_/lamella.py:57
 msgid "For enter lamella weight by hand"
-msgstr ""
+msgstr "Для ввода веса товара вручную"
 
 #: myshop/models/polymorphic_/lamella.py:69
 #: myshop/models/polymorphic_/smartcard.py:54
 #: myshop/models/polymorphic_/smartphone.py:117
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: myshop/models/polymorphic_/lamella.py:71
 #: myshop/models/polymorphic_/smartcard.py:56
@@ -148,35 +151,35 @@ msgstr ""
 
 #: myshop/models/polymorphic_/lamella.py:78
 msgid "Lamellas"
-msgstr ""
+msgstr "Ламели"
 
 #: myshop/models/polymorphic_/order.py:17
 msgid "Ordered quantity"
-msgstr ""
+msgstr "Заказанное количество"
 
 #: myshop/models/polymorphic_/order.py:18
 msgid "Item canceled "
-msgstr ""
+msgstr "Отменен"
 
 #: myshop/models/polymorphic_/product.py:22
 msgid "Product Name"
-msgstr ""
+msgstr "Название товара"
 
 #: myshop/models/polymorphic_/product.py:27
 msgid "Slug"
-msgstr ""
+msgstr "Путь"
 
 #: myshop/models/polymorphic_/product.py:32
 msgid "Caption"
-msgstr ""
+msgstr "Краткое описание"
 
 #: myshop/models/polymorphic_/product.py:36
 msgid "Short description used in the catalog's list view of products."
-msgstr ""
+msgstr "Короткое описание товара для каталога"
 
 #: myshop/models/polymorphic_/product.py:39
 msgid "Sort by"
-msgstr ""
+msgstr "Сортировать по"
 
 #: myshop/models/polymorphic_/product.py:45
 msgid "Choose list view this product shall appear on."
@@ -184,11 +187,11 @@ msgstr ""
 
 #: myshop/models/polymorphic_/product.py:56
 msgid "Product"
-msgstr ""
+msgstr "Товар"
 
 #: myshop/models/polymorphic_/product.py:57
 msgid "Products"
-msgstr ""
+msgstr "Товары"
 
 #: myshop/models/polymorphic_/smartcard.py:26
 #: myshop/templates/myshop/catalog/smartcard-detail.html:21
@@ -269,28 +272,28 @@ msgstr ""
 #: myshop/models/polymorphic_/smartphone.py:84
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:28
 msgid "Width"
-msgstr ""
+msgstr "Ширина"
 
 #: myshop/models/polymorphic_/smartphone.py:87
 msgid "Width in mm"
-msgstr ""
+msgstr "Ширина в мм"
 
 #: myshop/models/polymorphic_/smartphone.py:91
 msgid "Height"
-msgstr ""
+msgstr "Высота"
 
 #: myshop/models/polymorphic_/smartphone.py:94
 msgid "Height in mm"
-msgstr ""
+msgstr "Высота в мм"
 
 #: myshop/models/polymorphic_/smartphone.py:98
 #: myshop/templates/myshop/catalog/smartphonemodel-detail.html:53
 msgid "Weight"
-msgstr ""
+msgstr "Вес единицы"
 
 #: myshop/models/polymorphic_/smartphone.py:101
 msgid "Weight in gram"
-msgstr ""
+msgstr "Вес в гр."
 
 #: myshop/models/polymorphic_/smartphone.py:105
 #: myshop/templates/myshop/catalog/smartphonemodel-detail.html:57
@@ -326,122 +329,136 @@ msgstr ""
 msgid "Internal storage in MB"
 msgstr ""
 
-#: myshop/modifiers.py:17
+#: myshop/modifiers.py:21
 msgid "Postal shipping"
-msgstr ""
+msgstr "Доставка почтой"
 
-#: myshop/modifiers.py:36
+#: myshop/modifiers.py:40
 msgid "Shipping costs"
-msgstr ""
+msgstr "Стоимость доставки"
 
-#: myshop/modifiers.py:45
+#: myshop/modifiers.py:49
 msgid "Customer pickups the goods"
-msgstr ""
+msgstr "Самовывоз"
 
-#: myshop/modifiers.py:52
+#: myshop/modifiers.py:56
 msgid "Courier delivery. Onliy within Minsk"
-msgstr ""
+msgstr "Доставка курьером. (Только в пределах г. Минска)"
 
-#: myshop/modifiers.py:59
+#: myshop/modifiers.py:63
 msgid "Courier shipping costs"
-msgstr ""
+msgstr "Стоимость доставки курьером"
+
+#: myshop/modifiers.py:78
+msgid "Cash on Post"
+msgstr "Наложенный платеж"
+
+#: myshop/modifiers.py:85 myshop/modifiers.py:107
+msgid "+ {}% handling fee"
+msgstr "+ {}% комисия"
+
+#: myshop/modifiers.py:100
+msgid "Cash on Delivery"
+msgstr "Оплата при получении"
 
 #: myshop/settings.py:446
 msgid "Default Page"
-msgstr ""
+msgstr "Страница по умолчанию"
 
 #: myshop/settings.py:447
 msgid "Static Page"
-msgstr ""
+msgstr "Статическая страница"
 
 #: myshop/settings.py:524
 msgid "Product Heading"
-msgstr ""
+msgstr "Название товара"
 
 #: myshop/settings.py:525
 msgid "Manufacturer Filter"
-msgstr ""
+msgstr "Фильтр производителей"
 
 #: myshop/settings.py:529
 msgid "Default"
-msgstr ""
+msgstr "По умолчанию"
 
 #: myshop/settings.py:530
 msgid "Add Commodity to Cart"
-msgstr ""
+msgstr "Добавить в корзину"
 
-#: myshop/settings.py:666
+#: myshop/settings.py:670
 msgid "Thanks for purchasing at MyShop"
-msgstr ""
+msgstr "Спасибо за покупку"
 
 #: myshop/templates/myshop/cart/editable.html:9
 #: myshop/templates/myshop/cart/static.html:11
 #: myshop/templates/myshop/order/detail.html:10
 msgid "Product Code"
-msgstr ""
+msgstr "Артикул"
 
 #: myshop/templates/myshop/cart/editable.html:25
 msgid "Remove"
-msgstr ""
+msgstr "Удалить"
 
 #: myshop/templates/myshop/cart/editable.html:29
 msgid "Watch Item"
-msgstr ""
+msgstr "В список"
 
 #: myshop/templates/myshop/catalog/commodity-add2cart.html:8
 #: myshop/templates/myshop/catalog/lamellafix-add2cart.html:9
 #: myshop/templates/myshop/catalog/smartphone-add2cart.html:10
 msgid "Unit Price"
-msgstr ""
+msgstr "Цена за ед."
 
 #: myshop/templates/myshop/catalog/commodity-add2cart.html:9
 #: myshop/templates/myshop/catalog/lamellafix-add2cart.html:10
 #: myshop/templates/myshop/catalog/smartphone-add2cart.html:11
 msgid "Subtotal"
-msgstr ""
+msgstr "Стоимость корзины"
 
 #: myshop/templates/myshop/catalog/commodity-add2cart.html:20
 #: myshop/templates/myshop/catalog/lamellafix-add2cart.html:30
 #: myshop/templates/myshop/catalog/smartphone-add2cart.html:40
 msgid "Watch product"
-msgstr ""
+msgstr "В список"
 
 #: myshop/templates/myshop/catalog/commodity-add2cart.html:24
 #: myshop/templates/myshop/catalog/lamellafix-add2cart.html:34
 #: myshop/templates/myshop/catalog/smartphone-add2cart.html:43
 msgid "Add to cart"
-msgstr ""
+msgstr "Добавить в корзину"
 
 #: myshop/templates/myshop/catalog/lamellafix-add2cart.html:8
 #: myshop/templates/myshop/catalog/smartphone-add2cart.html:9
 msgid "Quantity"
-msgstr ""
+msgstr "Количество"
 
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:24
 msgid "Length"
-msgstr ""
+msgstr "Длина"
 
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:25
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:29
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:34
 msgid "mm"
-msgstr ""
+msgstr "мм"
 
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:33
 msgid "Depth"
-msgstr ""
+msgstr "Толщина"
 
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:39
 msgid "Weight per unit"
-msgstr ""
+msgstr "Вес одной шт."
 
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:40
 msgid "kg"
-msgstr ""
+msgstr "кг"
 
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:46
 msgid "* Price depends on order quantity. For get price enter quantity below"
 msgstr ""
+"*Цена зависит от заказанного количества. Введите необходимое количество в "
+"форму ниже."
 
 #: myshop/templates/myshop/catalog/lamellafix-detail.html:56
 msgid "Информация о товаре"
@@ -469,24 +486,24 @@ msgstr ""
 
 #: myshop/templates/myshop/catalog/smartphonemodel-detail.html:49
 msgid "Dimensions"
-msgstr ""
+msgstr "Размеры"
 
 #: myshop/templates/myshop/catalog/smartphonemodel-detail.html:58
 msgid "inch"
-msgstr ""
+msgstr "дюйм"
 
 #: myshop/templates/myshop/checkout/shipping-address-form.html:31
 msgid "Choose a previously used shipping address"
-msgstr ""
+msgstr "Выберите ранее используемый адрес доставки"
 
 #: myshop/templates/myshop/checkout/shipping-address-form.html:36
 msgid "Add a new shipping address"
-msgstr ""
+msgstr "Добавить новый адрес доставки"
 
 #: myshop/templates/myshop/checkout/shipping-address-form.html:46
 msgid "Remove this address"
-msgstr ""
+msgstr "Удалить этот адрес"
 
 #: myshop/templates/myshop/pages/password-reset-confirm.html:4
 msgid "Password Reset Confirm"
-msgstr ""
+msgstr "Подтверждение сброса пароля"

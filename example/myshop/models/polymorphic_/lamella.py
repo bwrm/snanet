@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from djangocms_text_ckeditor.fields import HTMLField
 from ..discount import Discount
 from shop.money.fields import MoneyField
+from random import randint
 
 from .product import Product, BaseProductManager
 
@@ -62,7 +63,7 @@ class LamellaFix(Product):
     product_code = models.CharField(
         _("Product code"),
         max_length=255,
-        unique=True,
+        blank=True,
     )
 
     description = HTMLField(
@@ -77,7 +78,40 @@ class LamellaFix(Product):
         verbose_name = _("Lamella")
         verbose_name_plural = _("Lamellas")
 
+    def is_unique_scu(self, scu):
+        scu = str(scu)
+        try:
+            LamellaFix.objects.get(product_code=scu)
+            return False
+        except:
+            return True
+
+    def set_num_scu(self, scu, n):
+        scu = str(scu)
+        while len(scu) <= int(n):
+            scu = '0'+ scu
+        return scu
+
+    def get_max_scu(self):
+        codes = LamellaFix.objects.all()
+        max_scu = 0
+        for code in codes:
+            code = int(code.product_code)
+            if code > max_scu:
+                max_scu = code
+        return max_scu
+
     def save(self, *args, **kwargs):
+        if not self.product_code or not self.is_unique_scu(self.product_code):
+            max_scu = int(self.get_max_scu())
+            while True:
+                new_scu = max_scu + 1
+                if self.is_unique_scu(new_scu):
+                    self.product_code = self.set_num_scu(new_scu, 4)
+                    break
+
+        # TODO: unique product_code
+
         if(self.is_lamella and not self.weight_by_hand):
             m = 0.00075  # calculated empiric method
             vol = float(self.length) * float(self.lamella_width) * float(self.depth)

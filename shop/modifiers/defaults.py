@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 from shop.modifiers.base import PaymentModifier, ShippingModifier
 from shop.money import AbstractMoney, Money
-from shop.payment.defaults import ForwardFundPayment
 from shop.shipping.defaults import DefaultShippingProvider
+from shop.payment.defaults import ForwardFundPayment
 from .base import BaseCartModifier
 
 

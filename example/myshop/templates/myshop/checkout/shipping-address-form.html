@@ -14,7 +14,7 @@
 
 {% block dialog_form %}
 {#{% if shipping_modifiers %}#}
-	<div ng-show="shipping_method.shipping_modifier==='postal-shipping' || shipping_method.shipping_modifier==='courier-delivery'" class="animate-show" ng-cloak>
+	<div ng-show="shipping_method.shipping_modifier==='postal-shipping' || shipping_method.shipping_modifier==='courier-delivery' || shipping_method.shipping_modifier==='postal-shipping-premium'" class="animate-show" ng-cloak>
 <form shop-address-form djng-endpoint="{% url 'shop:edit-shipping-address' '{{ priority }}' %}" name="{{ shipping_address_form.form_name }}" novalidate>
 	{% if shipping_address_form.allow_use_primary %}
 	<div class="has-feedback form-group">

@@ -45,11 +45,12 @@ class SmartCardAdmin(InvalidateProductCacheMixin, SortableAdminMixin, FrontendEd
 class LamellaFixAdmin(InvalidateProductCacheMixin, SortableAdminMixin, FrontendEditableAdminMixin,
                      CMSPageAsCategoryMixin, PlaceholderAdminMixin, PolymorphicChildModelAdmin):
     base_model = Product
-    fields = ['product_name', 'slug', 'product_code', 'unit_price', 'discont_scheme', 'active', 'caption',
-              'description', 'lamella_width', 'is_lamella', 'weight_by_hand', 'length', 'depth', 'weight']
+    fields = ['product_name', 'slug', 'unit_price', 'discont_scheme', 'active', 'caption',
+              'description', 'lamella_width', 'is_lamella', 'weight_by_hand', 'length', 'depth', 'weight', 'product_code']
     filter_horizontal = ['cms_pages']
     inlines = [ProductImageInline]
     prepopulated_fields = {'slug': ['product_name']}
+    save_as = True
 
 # admin.site.register(OperatingSystem, admin.ModelAdmin)
 

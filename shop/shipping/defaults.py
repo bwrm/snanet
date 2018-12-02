@@ -22,15 +22,27 @@ class CommissionGoodsWorkflowMixin(object):
     """
     TRANSITION_TARGETS = {
         'pick_goods': _("Picking goods"),
-        'pack_goods': _("Packing goods"),
+        # 'pack_goods': _("Packing goods"),
+        'ship_goods': _("Ship goods"),
+        'shipped': _("Goods is shipped"),
     }
 
-    @transition(field='status', source=['payment_confirmed'], target='pick_goods',
+    @transition(field='status', source=['payment_confirmed', 'created'], target='pick_goods',
         custom=dict(admin=True, button_name=_("Pick the goods")))
     def pick_goods(self, by=None):
         """Change status to 'pick_goods'."""
 
-    @transition(field='status', source=['pick_goods'],
-        target='pack_goods', custom=dict(admin=True, button_name=_("Pack the goods")))
-    def pack_goods(self, by=None):
-        """Change status to 'pack_goods'."""
+    # @transition(field='status', source=['pick_goods'],
+    #     target='pack_goods', custom=dict(admin=True, button_name=_("Pack the goods")))
+    # def pack_goods(self, by=None):
+    #     """Change status to 'pack_goods'."""
+
+    @transition(field='status', source=['pick_goods'], target='ship_goods',
+        custom=dict(admin=True, button_name=_("Ship the goods")))
+    def ship_goods(self, by=None):
+        """Use selected shipping object and change status to 'ship_goods'."""
+
+    @transition(field='status', source=['ship_goods'], target='shipped',
+        custom=dict(admin=True, button_name=_("Shipped")))
+    def shipped(self, by=None):
+        """Use selected shipping object and change status to 'shipped'."""
