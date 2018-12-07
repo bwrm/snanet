@@ -36,6 +36,6 @@ urlpatterns = [
 #     urlpatterns.extend(i18n_patterns(*i18n_urls))
 # else:
 #     urlpatterns.extend(i18n_urls)
-# -tak vrode rabotaet bez slesha /ru/
+# -tak vrode rabotaet bez slesha /ru/ siarh
 urlpatterns.extend(i18n_urls)
 urlpatterns.extend(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

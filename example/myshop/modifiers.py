@@ -10,7 +10,7 @@ from shop.payment.defaults import ForwardFundPayment
 from myshop.payment import CodPayment
 
 from shop.modifiers.base import PaymentModifier
-from shop_stripe import modifiers
+# from shop_stripe import modifiers
 
 
 class PostalShippingModifier(ShippingModifier):
