@@ -48,7 +48,7 @@ class PostalPremiumShippingModifier(ShippingModifier):
     shipping_provider = DefaultShippingProvider()
 
     def get_choice(self):
-        return (self.identifier, _("Postal shipping premium"))
+        return (self.identifier, _("Доставка почтой до дверей."))
 
     def add_extra_cart_row(self, cart, request):
         if not self.is_active(cart) and len(cart_modifiers_pool.get_shipping_modifiers()) > 1:
